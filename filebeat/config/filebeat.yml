@@ -1,0 +1,7 @@
+filebeat.inputs:
+  - type: log
+    paths:
+      - "/usr/share/dockerlogs/data/access.log"
+
+output.logstash:
+  hosts: ["localhost:5044"]
