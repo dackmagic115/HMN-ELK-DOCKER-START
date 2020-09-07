@@ -71,13 +71,13 @@ services:
       - elasticsearch
 
   filebeat:
-    hostname: filebeat
+    image: docker-logs-elk/filebeat:1.0.0
     build:
       context: filebeat/
       args:
         ELK_VERSION: $ELK_VERSION
     volumes:
-      - "/log:/usr/share/dockerlogs/data:ro"
+      - "./log:/usr/share/writelogs/data:ro"
     depends_on:
       - elasticsearch
       - logstash

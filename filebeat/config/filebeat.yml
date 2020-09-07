@@ -1,7 +1,15 @@
 filebeat.inputs:
   - type: log
     paths:
-      - "/usr/share/dockerlogs/data/access.log"
+      - "/usr/share/writelogs/data/access.log"
+
+processors:
+  - decode_json_fields:
+      fields: ["msg", "level", "date"]
+      process_array: false
+      max_depth: 3
+      target: ""
+      overwrite_keys: true
 
 output.logstash:
-  hosts: ["localhost:5044"]
+  hosts: ["logstash:5044"]
