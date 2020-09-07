@@ -1,7 +1,7 @@
 filebeat.inputs:
   - type: log
     paths:
-      - "/usr/share/writelogs/data/access.log"
+      - "/usr/share/writelogs/data/*.log"
 
 processors:
   - decode_json_fields:
